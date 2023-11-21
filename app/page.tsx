@@ -32,6 +32,7 @@ export default function Home() {
       setEntries([...entries, { url: url, shortUrl: shortUrl }]);
     }
     setUrl("");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shortUrl]);
 
   // useEffect(() => {
