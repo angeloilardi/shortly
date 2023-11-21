@@ -12,7 +12,7 @@ export default function Home() {
   // console.log(clipboard)
   const storedState = () => {
     if (localStorage.getItem("data")) {
-      return JSON.parse(localStorage.getItem("data"));
+      return JSON.parse(localStorage.getItem("data")!);
     }
     return [];
   };
