@@ -32,7 +32,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="flex justify-between items-center w-full h-20 px-4 text-white bg-transparent mt-10">
+    <div className="flex justify-between items-center w-full h-20 px-4 text-white bg-transparent mt-10 md:w-[88%]">
       <div>
         <h1 className="text-5xl ml-2">
           <a
@@ -47,7 +47,7 @@ const Navbar = () => {
       </div>
 
       <ul className="hidden md:flex">
-        {links.map(({ id, link }) => (
+        {links.map(({link, id }) => (
           <li
             key={id}
             className="nav-links px-4 cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 hover:text-white duration-200 link-underline"

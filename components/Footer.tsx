@@ -25,31 +25,42 @@ const icons = [
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-very_dark_violet">
-      <h3 className="text-white text-center text-3xl font-[500] tracking-wide py-12">Shortly</h3>
-        {footerLinks.map((link, i) => {
-          return (
-            <div key={i} className="flex flex-col gap-3 mb-8 justify-center items-center">
-                  <h5 className="capitalize text-white font-medium text-sm mb-2">{link.category}</h5>
-                  {
-                      link.links.map(item => {
-                      return (
-                          <Link className="capitalize text-silver text-sm font-[300]" key={i} href='#'>{item}</Link>
-                      )
-                      }
-        )}
-            </div>
-          );
-        })}
-      
-      <div className="flex justify-center gap-5 mb-12">
-        {
-          icons.map((icon, i) => {
-            return <Image src={icon} width={24} height={24} alt="" key={i}/>
-          }
+    <footer className="w-full bg-very_dark_violet flex justify-center ">
+      <div className="flex flex-col md:flex-row md:justify-center md:w-[88%] items-center gap-6 md:gap-20 md:items-start md:py-24">
+        <h3 className="text-white text-3xl font-[500] tracking-wide py-12 md:py-0 md:mr-auto">
+          Shortly
+        </h3>
+        {/* <div className="flex flex-col md:flex-row md:justify-between md:items-start md: gap-20"> */}
+          {footerLinks.map((link, i) => {
+            return (
+              <div
+                key={i}
+                className="flex flex-col gap-3 mb-8 md:mb-0 justify-center md:items-start items-center"
+              >
+                <h5 className="capitalize text-white font-medium text-sm mb-2">
+                  {link.category}
+                </h5>
+                {link.links.map((item) => {
+                  return (
+                    <Link
+                      className="capitalize text-silver text-sm font-[300]"
+                      key={item}
+                      href="#"
+                    >
+                      {item}
+                    </Link>
+                  );
+                })}
+              </div>
+            );
+          })}
+        {/* </div> */}
 
-          )
-        }
+        <div className="flex justify-center gap-5 mb-12 md:items-start">
+          {icons.map((icon, i) => {
+            return <Image src={icon} width={24} height={24} alt="" key={i} />;
+          })}
+        </div>
       </div>
     </footer>
   );
