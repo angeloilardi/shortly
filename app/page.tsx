@@ -3,12 +3,10 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
-import { Key, use, useEffect, useState } from "react";
-import useClippy from "use-clippy";
+import { Key, useEffect, useState } from "react";
 
-import axios from "axios";
 export default function Home() {
-  const [clipboard, setClipboard] = useClippy();
+
 
   function checkforStorage() {
     if (typeof window !== "undefined") {
@@ -77,7 +75,7 @@ const [storedState, setStoredState] = useState([])
 
       {/* Heading */}
       <section className="mb-24 md:mb-18 flex flex-col md:flex-row md:w-[88%]">
-        <div className="w-full  bg-[url('/images/illustration-working.svg')] md:ml-auto bg-cover ml-8 md:order-2 aspect-[11/9] max-h-[480px] max-w-[600px] overflow-visible"></div>
+        <div className="w-full  bg-[url('/images/illustration-working.svg')] md:ml-auto bg-cover ml-8 md:order-2 aspect-[11/9] max-h-[480px] max-w-[600px]"></div>
         <div className="flex flex-col justify-center items-center mx-4 md:items-start max-w-[570px]">
           <h2 className="text-[40px] font-bold mt-10 text-very_dark_violet">
             More than just shorter links
@@ -149,10 +147,8 @@ const [storedState, setStoredState] = useState([])
                         e.preventDefault();
                         console.log(e);
 
-                        setClipboard(entry.shortUrl);
+                        navigator.clipboard.writeText(entry.shortUrl)
                         setisCopied(entry.shortUrl);
-                        console.log("clipboard is: " + clipboard);
-                        console.log("isCopied is: " + isCopied);
                       }}
                       className={`bg-robin_egg_blue text-white rounded-md md:p-2 p-4 min-w-[100px] ${
                         isCopied !== entry.shortUrl
