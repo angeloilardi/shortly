@@ -15,15 +15,14 @@ export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
   const [isValid, setIsValid] = useState(true);
   const [entries, setEntries] = useState(() => {
-    // getting stored value
-    const saved = localStorage.getItem("data")!;
+    const saved = window?.localStorage.getItem("data")!;
     const initialValue = JSON.parse(saved);
     return initialValue || "";
   });
   const [isCopied, setisCopied] = useState('');
 
   useEffect(() => {
-    localStorage.setItem("data", JSON.stringify(entries));
+    window?.localStorage.setItem("data", JSON.stringify(entries));
   }, [entries]);
 
   useEffect(() => {
