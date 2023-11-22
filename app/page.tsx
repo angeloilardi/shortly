@@ -15,14 +15,14 @@ export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
   const [isValid, setIsValid] = useState(true);
   const [entries, setEntries] = useState(() => {
-    const saved = window?.localStorage.getItem("data")!;
+    const saved = global?.window?.localStorage.getItem("data")!;
     const initialValue = JSON.parse(saved);
     return initialValue || "";
   });
   const [isCopied, setisCopied] = useState('');
 
   useEffect(() => {
-    window?.localStorage.setItem("data", JSON.stringify(entries));
+    global?.window?.localStorage.setItem("data", JSON.stringify(entries));
   }, [entries]);
 
   useEffect(() => {
@@ -33,19 +33,9 @@ export default function Home() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shortUrl]);
 
-  // useEffect(() => {
-  //   setisCopied(clipboard)
-  //    console.log("clipboard is: " + clipboard);
-    
-  // }, [clipboard]
-
-  // )
-
   const handleClick = () => {
     url.trim().length === 0 ? setIsValid(false) : setIsValid(true),
       getShorturl();
-
-    // setEntry([...entry, { url: url, shortUrl: shortUrl }]);
   };
 
 
