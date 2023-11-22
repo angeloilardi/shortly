@@ -61,17 +61,17 @@ export default function Home() {
       <Navbar />
 
       {/* Heading */}
-      <section className="mb-24 md:mb-18 flex flex-col md:flex-row md:w-full md:ml-[12%]">
-        <div className="w-full  bg-[url('/images/illustration-working.svg')] md:ml-auto bg-cover pl-8 md:order-2 aspect-[11/9] max-h-[480px] max-w-[600px] overflow-hidden bg-left"></div>
+      <section className="mb-24 md:mb-18 flex flex-col md:flex-row md:w-full md:pl-[6%]">
+        <div className="w-full  bg-[url('/images/illustration-working.svg')] md:ml-auto bg-cover pl-8 md:order-2 aspect-[11/9] max-h-[480px] max-w-[600px] overflow-clip bg-left"></div>
         <div className="flex flex-col justify-center items-center mx-4 md:items-start max-w-[570px]">
-          <h2 className="text-[40px] font-bold mt-10 text-very_dark_violet">
+          <h2 className="text-[40px] font-bold mt-16 text-very_dark_violet">
             More than just shorter links
           </h2>
           <p className="mt-4 text-silver mb-6 text-lg">
             {`Build your brand's recognition and get detailed insights on how your
             links are performing.`}
           </p>
-          <button className="bg-robin_egg_blue text-white rounded-full p-4 w-[195px]">
+          <button className="bg-robin_egg_blue text-white rounded-full p-4 w-[195px] hover:opacity-60">
             Get Started
           </button>
         </div>
@@ -107,7 +107,7 @@ export default function Home() {
                   Please add a link
                 </span>
                 <button
-                  className="rounded-md w-[90%] bg-robin_egg_blue p-4 text-white"
+                  className="rounded-md w-[90%] bg-robin_egg_blue p-4 text-white hover:bg-robin_egg_blue-800"
                   type="submit"
                 >
                   Shorten It!
@@ -115,6 +115,7 @@ export default function Home() {
               </div>
             </form>
           </div>
+
           {/* History Tabs */}
           {isClient && entries
             ? entries.map(
@@ -124,9 +125,7 @@ export default function Home() {
                       key={i}
                       className="bg-white flex flex-col gap-3 rounded-lg py-6 md:py-2 justify-center px-4 md:flex-row md:items-center"
                     >
-                      <p className="text-black">
-                        {entry.url}
-                      </p>
+                      <p className="text-black">{entry.url}</p>
                       <hr className="p-0 w-full md:hidden" />
                       <Link
                         href={entry.shortUrl}
@@ -140,7 +139,7 @@ export default function Home() {
                           navigator.clipboard.writeText(entry.shortUrl);
                           setisCopied(entry.shortUrl);
                         }}
-                        className={`bg-robin_egg_blue text-white rounded-md md:p-2 p-4 min-w-[100px] ${
+                        className={`bg-robin_egg_blue text-white rounded-md md:p-2 p-4 min-w-[100px] hover:opacity-60 ${
                           isCopied !== entry.shortUrl
                             ? "bg-robin_egg_blue"
                             : "bg-very_dark_violet"
@@ -155,6 +154,7 @@ export default function Home() {
               )
             : null}
         </div>
+
         {/* Advanced Statistics */}
         <div className="mx-4 mt-10 max-w-[520px]">
           <h4 className="text-center text-[28px] font-semibold text-very_dark_violet">
@@ -238,11 +238,11 @@ export default function Home() {
       </div>
 
       {/* Boost your links */}
-      <div className="bg-english_violet h-[300px] w-full bg-[url(/images/bg-boost-mobile.svg)] flex flex-col justify-center items-center gap-4">
+      <div className="bg-english_violet h-[300px] w-full bg-[url(/images/bg-boost-mobile.svg)] md:bg-[url(/images/bg-boost-desktop.svg)] bg-cover flex flex-col justify-center items-center gap-4">
         <h4 className="text-white text-2xl font-[500]">
           Boost your links today
         </h4>
-        <button className="bg-robin_egg_blue text-white rounded-full p-4 w-[195px]">
+        <button className="bg-robin_egg_blue text-white rounded-full p-4 w-[195px] hover:opacity-60">
           Get Started
         </button>
       </div>

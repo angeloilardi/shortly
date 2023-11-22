@@ -11,71 +11,78 @@ const Navbar = () => {
   const links = [
     {
       id: 1,
-      link: "home",
+      link: "features",
     },
     {
       id: 2,
-      link: "about",
+      link: "prices",
     },
     {
       id: 3,
-      link: "portfolio",
-    },
-    {
-      id: 4,
-      link: "experience",
-    },
-    {
-      id: 5,
-      link: "contact",
+      link: "resources",
     },
   ];
 
   return (
-    <div className="flex justify-between items-center w-full h-20 px-4 text-white bg-transparent mt-10 md:w-[88%]">
+    <div className="flex justify-start items-center w-full h-20 px-4 text-white bg-transparent mt-10 md:w-[88%]">
       <div>
         <h1 className="text-5xl ml-2">
-          <a
-            className="underline"
-            href=""
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Image src='/images/logo.svg' alt=""  width={121} height={33}/>
+          <a className="underline" href="" target="_blank" rel="noreferrer">
+            <Image src="/images/logo.svg" alt="" width={121} height={33} />
           </a>
         </h1>
       </div>
 
+      {/* Deesktop navigation */}
       <ul className="hidden md:flex">
-        {links.map(({link, id }) => (
+        {links.map(({ link, id }) => (
           <li
             key={id}
-            className="nav-links px-4 cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 hover:text-white duration-200 link-underline"
+            className="px-8 cursor-pointer capitalize text-silver hover:text-very_dark_violet font-semibold"
           >
             <Link href={link}>{link}</Link>
           </li>
         ))}
       </ul>
 
+      <ul className="hidden md:flex ml-auto items-center">
+        <li className="px-4 cursor-pointer capitalize text-silver hover:text-very_dark_violet font-semibold ml-auto">
+          <Link href="#">Login</Link>
+        </li>
+        <li className="ml-auto">
+          <button className="bg-robin_egg_blue text-white rounded-full px-4 py-3 w-[100px] hover:bg-robin_egg_blue/60">
+            Sign Up
+          </button>
+        </li>
+      </ul>
+
       <div
         onClick={() => setNav(!nav)}
-        className="cursor-pointer pr-4 z-10 text-gray-500 md:hidden"
+        className="cursor-pointer pr-4 z-10 text-gray-500 md:hidden ml-auto"
       >
         {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
       </div>
 
       {nav && (
-        <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-gray-500">
+        <ul className="md:hidden flex flex-col justify-center items-center absolute w-[88%] top-28 bg-english_violet rounded-md text-white font-semibold aspect-[11/9] max-h-[480px] mx-0 left-[6%] -right-[6%] gap-8 py-8 px-4">
           {links.map(({ id, link }) => (
-            <li
-              key={id}
-              className="px-4 cursor-pointer capitalize py-6 text-4xl"
-            >
+            <li key={id} className=" cursor-pointer capitalize text-lg">
               <Link onClick={() => setNav(!nav)} href={link}>
                 {link}
               </Link>
             </li>
           ))}
+          <hr className="bg-rose_quartz w-full" />
+          <li className=" cursor-pointer capitalize text-lg">
+            <Link onClick={() => setNav(!nav)} href="#">
+              Login
+            </Link>
+          </li>
+          <li>
+            <button className="bg-robin_egg_blue text-white rounded-full p-4 w-[195px] hover:opacity-60">
+              Sign Up
+            </button>
+          </li>
         </ul>
       )}
     </div>

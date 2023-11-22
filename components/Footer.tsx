@@ -43,7 +43,7 @@ export default function Footer() {
                 {link.links.map((item) => {
                   return (
                     <Link
-                      className="capitalize text-silver text-sm font-[300]"
+                      className="capitalize text-silver hover:text-robin_egg_blue text-sm font-[300]"
                       key={item}
                       href="#"
                     >
@@ -58,7 +58,17 @@ export default function Footer() {
 
         <div className="flex justify-center gap-5 mb-12 md:items-start">
           {icons.map((icon, i) => {
-            return <Image src={icon} width={24} height={24} alt="" key={i} />;
+            return (
+              <Link href={"#"} key={i}>
+                <Image
+                  src={icon}
+                  width={24}
+                  height={24}
+                  alt=""
+                  className="hover:fill-robin_egg_blue"
+                />
+              </Link>
+            );
           })}
         </div>
       </div>
