@@ -60,12 +60,7 @@ const [storedState, setStoredState] = useState([])
 
 
   const getShorturl = async () => {
-    const res = await fetch(`https://is.gd/create.php?format=json&url=${url}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(`https://is.gd/create.php?format=json&url=${url}`);
 
     if (!res.ok) {
       throw new Error("Failed to fetch data");
