@@ -9,18 +9,17 @@ import useClippy from "use-clippy";
 import axios from "axios";
 export default function Home() {
     const [clipboard, setClipboard] = useClippy();
-  // console.log(clipboard)
-  const storedState = () => {
-    if (localStorage.getItem("data")) {
-      return JSON.parse(localStorage.getItem("data")!);
-    }
-    return [];
-  };
+
 
   const [url, setUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [isValid, setIsValid] = useState(true);
-  const [entries, setEntries] = useState(storedState);
+  const [entries, setEntries] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("data")!;
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
   const [isCopied, setisCopied] = useState('');
 
   useEffect(() => {
