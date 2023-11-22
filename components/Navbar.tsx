@@ -44,7 +44,7 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
-
+      
       <ul className="hidden md:flex ml-auto items-center">
         <li className="px-4 cursor-pointer capitalize text-silver hover:text-very_dark_violet font-semibold ml-auto">
           <Link href="#">Login</Link>
@@ -56,12 +56,15 @@ const Navbar = () => {
         </li>
       </ul>
 
+      {/* Buger menu */}
       <div
         onClick={() => setNav(!nav)}
         className="cursor-pointer pr-4 z-10 text-gray-500 md:hidden ml-auto"
       >
         {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
       </div>
+
+      {/* Mobile navigation */}
 
       {nav && (
         <ul className="md:hidden flex flex-col justify-center items-center absolute w-[88%] top-28 bg-english_violet rounded-md text-white font-semibold aspect-[11/9] max-h-[480px] mx-0 left-[6%] -right-[6%] gap-8 py-8 px-4">

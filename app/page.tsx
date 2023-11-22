@@ -62,7 +62,7 @@ export default function Home() {
 
       {/* Heading */}
       <section className="mb-24 md:mb-18 flex flex-col md:flex-row md:w-full md:pl-[6%]">
-        <div className="w-full  bg-[url('/images/illustration-working.svg')] md:ml-auto bg-cover pl-8 md:order-2 aspect-[11/9] max-h-[480px] max-w-[600px] overflow-clip bg-left"></div>
+        <div className="w-full  bg-[url('/images/illustration-working.svg')] ml-8 bg-cover md:order-2 aspect-[11/9] max-h-[480px]  overflow-clip bg-left"></div>
         <div className="flex flex-col justify-center items-center mx-4 md:items-start max-w-[570px]">
           <h2 className="text-[40px] font-bold mt-16 text-very_dark_violet">
             More than just shorter links
