@@ -3,11 +3,10 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
+import Link from "next/link";
 import { Key, useEffect, useState } from "react";
 
 export default function Home() {
-
-
   function checkforStorage() {
     if (typeof window !== "undefined") {
       if (localStorage.getItem("data")) {
@@ -17,27 +16,14 @@ export default function Home() {
       }
     }
   }
-  
-
-const [isClient, setIsClient] = useState(false);
-const [storedState, setStoredState] = useState([])
+  const [isClient, setIsClient] = useState(false);
   const [url, setUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [isValid, setIsValid] = useState(true);
   const [entries, setEntries] = useState(checkforStorage);
-  // const [entries, setEntries] = useState(() => {
-  //   const saved = window?.localStorage.getItem("data")!;
-  //   const initialValue = JSON.parse(saved);
-  //   return initialValue || "";
-  // });
-  const [isCopied, setisCopied] = useState('');
 
-    // useEffect(() => {
-    //   const saved = localStorage.getItem("data")!;
-    //   const initialValue = JSON.parse(saved);
-    //   setStoredState(initialValue);
-  // }, []);
-  
+  const [isCopied, setisCopied] = useState("");
+
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -51,15 +37,13 @@ const [storedState, setStoredState] = useState([])
       setEntries([...entries, { url: url, shortUrl: shortUrl }]);
     }
     setUrl("");
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shortUrl]);
 
   const handleClick = () => {
     url.trim().length === 0 ? setIsValid(false) : setIsValid(true),
       getShorturl();
-
   };
-
 
   const getShorturl = async () => {
     const res = await fetch(`https://is.gd/create.php?format=json&url=${url}`);
@@ -71,14 +55,13 @@ const [storedState, setStoredState] = useState([])
     const results = await res.json();
     setShortUrl(results.shorturl);
   };
-  
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-white relative">
       <Navbar />
 
       {/* Heading */}
-      <section className="mb-24 md:mb-18 flex flex-col md:flex-row md:w-[88%]">
+      <section className="mb-24 md:mb-18 flex flex-col md:flex-row md:w-full md:ml-[12%]">
         <div className="w-full  bg-[url('/images/illustration-working.svg')] md:ml-auto bg-cover pl-8 md:order-2 aspect-[11/9] max-h-[480px] max-w-[600px] overflow-hidden bg-left"></div>
         <div className="flex flex-col justify-center items-center mx-4 md:items-start max-w-[570px]">
           <h2 className="text-[40px] font-bold mt-10 text-very_dark_violet">
@@ -133,19 +116,24 @@ const [storedState, setStoredState] = useState([])
             </form>
           </div>
           {/* History Tabs */}
-            {isClient && entries ? (
-              entries.map(
+          {isClient && entries
+            ? entries.map(
                 (entry: { url: string; shortUrl: string }, i: Key) => {
                   return (
                     <div
                       key={i}
                       className="bg-white flex flex-col gap-3 rounded-lg py-6 md:py-2 justify-center px-4 md:flex-row md:items-center"
                     >
-                        <p className="text-black">{entry.url}</p>
-                        <hr className="p-0 w-full md:hidden" />
-                        <p className="text-robin_egg_blue md:ml-auto">
-                          {entry.shortUrl}
-                        </p>
+                      <p className="text-black">
+                        {entry.url}
+                      </p>
+                      <hr className="p-0 w-full md:hidden" />
+                      <Link
+                        href={entry.shortUrl}
+                        className="text-robin_egg_blue md:ml-auto"
+                      >
+                        {entry.shortUrl}
+                      </Link>
                       <button
                         onClick={(e) => {
                           e.preventDefault();
@@ -165,9 +153,7 @@ const [storedState, setStoredState] = useState([])
                   );
                 }
               )
-            ) : (
-              null
-            )}
+            : null}
         </div>
         {/* Advanced Statistics */}
         <div className="mx-4 mt-10 max-w-[520px]">
