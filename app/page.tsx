@@ -19,7 +19,7 @@ export default function Home() {
   }
   
 
-
+const [isClient, setIsClient] = useState(false);
 const [storedState, setStoredState] = useState([])
   const [url, setUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
@@ -36,10 +36,14 @@ const [storedState, setStoredState] = useState([])
     //   const saved = localStorage.getItem("data")!;
     //   const initialValue = JSON.parse(saved);
     //   setStoredState(initialValue);
-    // }, []);
+  // }, []);
+  
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
-    global?.window?.localStorage.setItem("data", JSON.stringify(entries));
+    localStorage.setItem("data", JSON.stringify(entries));
   }, [entries]);
 
   useEffect(() => {
@@ -75,7 +79,7 @@ const [storedState, setStoredState] = useState([])
 
       {/* Heading */}
       <section className="mb-24 md:mb-18 flex flex-col md:flex-row md:w-[88%]">
-        <div className="w-full  bg-[url('/images/illustration-working.svg')] md:ml-auto bg-cover ml-8 md:order-2 aspect-[11/9] max-h-[480px] max-w-[600px]"></div>
+        <div className="w-full  bg-[url('/images/illustration-working.svg')] md:ml-auto bg-cover pl-8 md:order-2 aspect-[11/9] max-h-[480px] max-w-[600px] overflow-hidden bg-left"></div>
         <div className="flex flex-col justify-center items-center mx-4 md:items-start max-w-[570px]">
           <h2 className="text-[40px] font-bold mt-10 text-very_dark_violet">
             More than just shorter links
@@ -129,45 +133,41 @@ const [storedState, setStoredState] = useState([])
             </form>
           </div>
           {/* History Tabs */}
-          {entries ? (
-            entries.map((entry: { url: string; shortUrl: string }, i: Key) => {
-              return (
-                <>
-                  <div
-                    key={i}
-                    className="bg-white flex flex-col gap-3 rounded-lg py-6 md:py-2 justify-center px-4 md:flex-row md:items-center"
-                  >
-                    <p className="text-black">{entry.url}</p>
-                    <hr className="p-0 w-full md:hidden" />
-                    <p className="text-robin_egg_blue md:ml-auto">
-                      {entry.shortUrl}
-                    </p>
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        console.log(e);
-
-                        navigator.clipboard.writeText(entry.shortUrl)
-                        setisCopied(entry.shortUrl);
-                      }}
-                      className={`bg-robin_egg_blue text-white rounded-md md:p-2 p-4 min-w-[100px] ${
-                        isCopied !== entry.shortUrl
-                          ? "bg-robin_egg_blue"
-                          : "bg-very_dark_violet"
-                      }
-                        `}
+            {isClient && entries ? (
+              entries.map(
+                (entry: { url: string; shortUrl: string }, i: Key) => {
+                  return (
+                    <div
+                      key={i}
+                      className="bg-white flex flex-col gap-3 rounded-lg py-6 md:py-2 justify-center px-4 md:flex-row md:items-center"
                     >
-                      {isCopied === entry.shortUrl ? "Copied!" : "Copy"}
-                    </button>
-                  </div>
-                </>
-              );
-            })
-          ) : (
-            <>
-              <div></div>
-            </>
-          )}
+                        <p className="text-black">{entry.url}</p>
+                        <hr className="p-0 w-full md:hidden" />
+                        <p className="text-robin_egg_blue md:ml-auto">
+                          {entry.shortUrl}
+                        </p>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigator.clipboard.writeText(entry.shortUrl);
+                          setisCopied(entry.shortUrl);
+                        }}
+                        className={`bg-robin_egg_blue text-white rounded-md md:p-2 p-4 min-w-[100px] ${
+                          isCopied !== entry.shortUrl
+                            ? "bg-robin_egg_blue"
+                            : "bg-very_dark_violet"
+                        }
+                        `}
+                      >
+                        {isCopied === entry.shortUrl ? "Copied!" : "Copy"}
+                      </button>
+                    </div>
+                  );
+                }
+              )
+            ) : (
+              null
+            )}
         </div>
         {/* Advanced Statistics */}
         <div className="mx-4 mt-10 max-w-[520px]">
