@@ -3,23 +3,42 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
-import { Key, useEffect, useState } from "react";
+import { Key, use, useEffect, useState } from "react";
 import useClippy from "use-clippy";
 
 import axios from "axios";
 export default function Home() {
-    const [clipboard, setClipboard] = useClippy();
+  const [clipboard, setClipboard] = useClippy();
+
+  function checkforStorage() {
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("data")) {
+        return JSON.parse(localStorage.getItem("data")!);
+      } else {
+        return [];
+      }
+    }
+  }
+  
 
 
+const [storedState, setStoredState] = useState([])
   const [url, setUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [isValid, setIsValid] = useState(true);
-  const [entries, setEntries] = useState(() => {
-    const saved = global?.window?.localStorage.getItem("data")!;
-    const initialValue = JSON.parse(saved);
-    return initialValue || "";
-  });
+  const [entries, setEntries] = useState(checkforStorage);
+  // const [entries, setEntries] = useState(() => {
+  //   const saved = window?.localStorage.getItem("data")!;
+  //   const initialValue = JSON.parse(saved);
+  //   return initialValue || "";
+  // });
   const [isCopied, setisCopied] = useState('');
+
+    // useEffect(() => {
+    //   const saved = localStorage.getItem("data")!;
+    //   const initialValue = JSON.parse(saved);
+    //   setStoredState(initialValue);
+    // }, []);
 
   useEffect(() => {
     global?.window?.localStorage.setItem("data", JSON.stringify(entries));
@@ -36,6 +55,7 @@ export default function Home() {
   const handleClick = () => {
     url.trim().length === 0 ? setIsValid(false) : setIsValid(true),
       getShorturl();
+
   };
 
 
