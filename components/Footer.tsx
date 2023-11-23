@@ -1,5 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import FBIcon from "public/images/icon-facebook.svg";
+import TwitterIcon from "public/images/icon-twitter.svg";
+import PinterestIcon from "public/images/icon-pinterest.svg";
+import InstagramIcon from "public/images/icon-instagram.svg";
 
 const footerLinks = [
   {
@@ -17,10 +21,10 @@ const footerLinks = [
 ];
 
 const icons = [
-  "/images/icon-facebook.svg",
-  "/images/icon-twitter.svg",
-  "/images/icon-pinterest.svg",
-  "/images/icon-instagram.svg",
+ FBIcon, TwitterIcon, PinterestIcon, InstagramIcon
+  // "/images/icon-twitter.svg",
+  // "/images/icon-pinterest.svg",
+  // "/images/icon-instagram.svg",
 ];
 
 export default function Footer() {
@@ -31,46 +35,42 @@ export default function Footer() {
           Shortly
         </h3>
         {/* <div className="flex flex-col md:flex-row md:justify-between md:items-start md: gap-20"> */}
-          {footerLinks.map((link, i) => {
-            return (
-              <div
-                key={i}
-                className="flex flex-col gap-3 mb-8 md:mb-0 justify-center md:items-start items-center"
-              >
-                <h5 className="capitalize text-white font-medium text-sm mb-2">
-                  {link.category}
-                </h5>
-                {link.links.map((item) => {
-                  return (
-                    <Link
-                      className="capitalize text-silver hover:text-robin_egg_blue text-sm font-[300]"
-                      key={item}
-                      href="#"
-                    >
-                      {item}
-                    </Link>
-                  );
-                })}
-              </div>
-            );
-          })}
+        {footerLinks.map((link, i) => {
+          return (
+            <div
+              key={i}
+              className="flex flex-col gap-3 mb-8 md:mb-0 justify-center md:items-start items-center"
+            >
+              <h5 className="capitalize text-white font-medium text-sm mb-2">
+                {link.category}
+              </h5>
+              {link.links.map((item) => {
+                return (
+                  <Link
+                    className="capitalize text-silver hover:text-robin_egg_blue text-sm font-[300]"
+                    key={item}
+                    href="#"
+                  >
+                    {item}
+                  </Link>
+                );
+              })}
+            </div>
+          );
+        })}
         {/* </div> */}
 
-        <div className="flex justify-center gap-5 mb-12 md:items-start">
+        {/* <div className="flex justify-center gap-5 mb-12 md:items-start">
           {icons.map((icon, i) => {
             return (
               <Link href={"#"} key={i}>
-                <Image
-                  src={icon}
-                  width={24}
-                  height={24}
-                  alt=""
-                  className="hover:fill-robin_egg_blue"
-                />
+                {icon}
               </Link>
             );
           })}
-        </div>
+        </div> */}
+
+        <FBIcon fill='red' />
       </div>
     </footer>
   );

@@ -24,7 +24,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="flex justify-start items-center w-full h-20 px-4 text-white bg-transparent mt-10 md:w-[88%]">
+    <div className="flex justify-start items-center w-full h-20 px-4 text-white bg-transparent my-10 md:w-[88%]">
       <div>
         <h1 className="text-5xl ml-2">
           <a className="underline" href="" target="_blank" rel="noreferrer">
@@ -56,7 +56,7 @@ const Navbar = () => {
         </li>
       </ul>
 
-      {/* Buger menu */}
+      {/* Burger menu */}
       <div
         onClick={() => setNav(!nav)}
         className="cursor-pointer pr-4 z-10 text-gray-500 md:hidden ml-auto"

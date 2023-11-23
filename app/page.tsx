@@ -62,7 +62,7 @@ export default function Home() {
 
       {/* Heading */}
       <section className="mb-24 md:mb-18 flex flex-col md:flex-row md:w-full md:pl-[6%]">
-        <div className="w-full  bg-[url('/images/illustration-working.svg')] ml-8 bg-cover md:order-2 aspect-[11/9] max-h-[480px]  overflow-clip bg-left"></div>
+        <div className="w-full  bg-[url('/images/illustration-working.svg')] md:ml-auto bg-cover md:order-2 aspect-[31/24] max-h-[480px] max-w-[600px] overflow-hidden bg-left min-h-[300px]"></div>
         <div className="flex flex-col justify-center items-center mx-4 md:items-start max-w-[570px]">
           <h2 className="text-[40px] font-bold mt-16 text-very_dark_violet">
             More than just shorter links
@@ -82,9 +82,9 @@ export default function Home() {
         {/* Link input */}
 
         <div className="w-[88%] z-10 relative -top-[85px] flex flex-col gap-6">
-          <div className="bg-english_violet py-6 rounded-lg ">
+          <div className="bg-english_violet py-6 rounded-lg">
             <form action={handleClick} noValidate className="group">
-              <div className="flex flex-col items-center justify-center gap-4">
+              <div className="flex flex-col items-center justify-center gap-4 md:flex-row flex-wrap p-4">
                 <input
                   onChange={(e) => {
                     setUrl(e.target.value);
@@ -92,7 +92,7 @@ export default function Home() {
                   type="text"
                   value={url}
                   placeholder="Shorten a link here..."
-                  className={`rounded-md p-4 w-[90%] focus:outline-none focus:ring-0 focus:border-0 focus:placeholder-silver peer text-black ${
+                  className={`rounded-md p-4 w-full focus:outline-none focus:ring-0 focus:border-0 focus:placeholder-silver peer text-black md:basis-8/12 flex-grow ${
                     isValid
                       ? ""
                       : "placeholder-bittersweet/40 border-4 border-bittersweet"
@@ -100,14 +100,14 @@ export default function Home() {
                   required
                 />
                 <span
-                  className={`self-start text-xs font-bold text-bittersweet italic ml-5 peer-[:focus]:hidden ${
+                  className={`self-start text-xs font-bold text-bittersweet italic peer-[:focus]:hidden md:order-3 md:mr-auto ${
                     isValid ? "hidden" : "block"
                   } `}
                 >
                   Please add a link
                 </span>
                 <button
-                  className="rounded-md w-[90%] bg-robin_egg_blue p-4 text-white hover:bg-robin_egg_blue-800"
+                  className="rounded-md w-full bg-robin_egg_blue p-4 text-white hover:bg-robin_egg_blue-800 md:flex-shrink md:basis-3/12"
                   type="submit"
                 >
                   Shorten It!
