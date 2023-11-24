@@ -21,13 +21,26 @@ const footerLinks = [
 ];
 
 const icons = [
- FBIcon, TwitterIcon, PinterestIcon, InstagramIcon
-  // "/images/icon-twitter.svg",
-  // "/images/icon-pinterest.svg",
-  // "/images/icon-instagram.svg",
-];
+  {
+    name: "FB",
+    icon: FBIcon,
+  },
+  {
+    name: "Twitter",
+    icon: TwitterIcon,
+  },
+  {
+    name: "Pinteres",
+    icon: PinterestIcon,
+  },
+   {
+    name: "Instagram",
+    icon: InstagramIcon,
+  },
+]
 
 export default function Footer() {
+  console.log(FBIcon);
   return (
     <footer className="w-full bg-very_dark_violet flex justify-center ">
       <div className="flex flex-col md:flex-row md:justify-center md:w-[88%] items-center gap-6 md:gap-20 md:items-start md:py-24">
@@ -60,17 +73,15 @@ export default function Footer() {
         })}
         {/* </div> */}
 
-        {/* <div className="flex justify-center gap-5 mb-12 md:items-start">
-          {icons.map((icon, i) => {
+        <div className="flex justify-center gap-5 mb-12 md:items-start">
+          {icons.map((icon) => {
             return (
-              <Link href={"#"} key={i}>
-                {icon}
+              <Link href={"#"} key={icon.name}>
+                <icon.icon className='fill-white hover:fill-robin_egg_blue' />
               </Link>
             );
           })}
-        </div> */}
-
-        <FBIcon fill='red' />
+        </div>
       </div>
     </footer>
   );
