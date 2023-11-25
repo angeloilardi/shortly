@@ -71,7 +71,7 @@ export default function Home() {
             {`Build your brand's recognition and get detailed insights on how your
             links are performing.`}
           </p>
-          <button className="bg-robin_egg_blue text-white rounded-full p-4 w-[195px] hover:opacity-60">
+          <button className="bg-robin_egg_blue text-white rounded-full p-4 w-[195px] hover:bg-robin_egg_blue-800">
             Get Started
           </button>
         </div>
@@ -82,7 +82,7 @@ export default function Home() {
         {/* Link input */}
 
         <div className="w-[88%] z-10 relative -top-[85px] flex flex-col gap-6">
-          <div className="bg-english_violet py-6 rounded-lg">
+          <div className="bg-english_violet p-6 rounded-lg bg-[url(/images/bg-boost-mobile.svg)] md:bg-[url(/images/bg-boost-desktop.svg)] bg-no-repeat bg-cover">
             <form action={handleClick} noValidate className="group">
               <div className="flex flex-col items-center justify-center gap-4 md:flex-row flex-wrap p-4">
                 <input
@@ -139,7 +139,7 @@ export default function Home() {
                           navigator.clipboard.writeText(entry.shortUrl);
                           setisCopied(entry.shortUrl);
                         }}
-                        className={`bg-robin_egg_blue text-white rounded-md md:p-2 p-4 min-w-[100px] hover:opacity-60 ${
+                        className={`bg-robin_egg_blue text-white rounded-md md:p-2 p-4 min-w-[100px] hover:bg-robin_egg_blue-800 ${
                           isCopied !== entry.shortUrl
                             ? "bg-robin_egg_blue"
                             : "bg-very_dark_violet"
@@ -213,7 +213,7 @@ export default function Home() {
             </div>
           </div>
           {/* Separator */}
-          <div className="w-2.5 h-[50px] md:w-8 md:h-2 bg-robin_egg_blue grow shrink-0"></div>
+          <div className="w-2.5 h-[50px] md:w-8 md:h-2 bg-robin_egg_blue shrink-0"></div>
           {/* Fully Customizable */}
           <div className="mx-5 md:mx-0 bg-white rounded-md flex flex-col items-center md:items-start relative justify-end md:top-14">
             <div className="rounded-full flex justify-center items-center w-[90px] h-[90px] bg-english_violet absolute -top-10 md:ml-6">
@@ -242,7 +242,7 @@ export default function Home() {
         <h4 className="text-white text-2xl font-[500]">
           Boost your links today
         </h4>
-        <button className="bg-robin_egg_blue text-white rounded-full p-4 w-[195px] hover:opacity-60">
+        <button className="bg-robin_egg_blue text-white rounded-full p-4 w-[195px] hover:bg-robin_egg_blue-800">
           Get Started
         </button>
       </div>

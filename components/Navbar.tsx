@@ -45,7 +45,7 @@ const Navbar = () => {
         ))}
       </ul>
       
-      <ul className="hidden md:flex ml-auto items-center">
+      <ul className="hidden md:flex ml-auto items-center gap-4">
         <li className="px-4 cursor-pointer capitalize text-silver hover:text-very_dark_violet font-semibold ml-auto">
           <Link href="#">Login</Link>
         </li>
