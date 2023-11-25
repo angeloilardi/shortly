@@ -11,10 +11,7 @@ This is a solution to the [Shortly URL shortening API Challenge challenge on Fro
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 **Note: Delete this note and update the table of contents based on what sections you keep.**
 
@@ -38,7 +35,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/url-shortner-with-nextjs-and-tailwind-css-QYWfeMXlJB](https://www.frontendmentor.io/solutions/url-shortner-with-nextjs-and-tailwind-css-QYWfeMXlJB)
 - Live Site URL: [https://shortly-gamma-bice.vercel.app/](https://shortly-gamma-bice.vercel.app/)
 
 ## My process
